@@ -200,6 +200,11 @@ Once you have all of this sorted our in your profiles run.
 You may also find `build-and-upgrade.yml` interesting. It simply runs the build
 and firmware upgrade playbooks back to back for one button testing of changes.
 
+## Steps for flashing First Time Omnia
+1. Open router and connect serial to USB cable. Note that you may need drivers to use the cable with your computer. Run a program
+   like minicom and have it listen on some device with the name tty.usbserial or something to that effect. 
+2.
+
 Something didn't work
 ---------------------
 
