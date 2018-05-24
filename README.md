@@ -202,8 +202,19 @@ and firmware upgrade playbooks back to back for one button testing of changes.
 
 ## Steps for flashing First Time Omnia
 1. Open router and connect serial to USB cable. Note that you may need drivers to use the cable with your computer. Run a program
-   like minicom and have it listen on some device with the name tty.usbserial or something to that effect. 
-2.
+   like `minicom` and have it listen on some device with the name `tty.usbserial` or something to that effect. 
+2. Try to flash the router by booting it into flash mode (press and hold reset and wait for 4 LEDs to light up) with a flash drive
+   plugged in containing the medkit used to set up the flash. 
+3. `scp` the sysupgrade package to `/tmp` on the router.
+4. `ssh` into the router and run `sysupgrade -v -n /tmp/<firmware>`.
+5. The first time it will fail. In the event that this happens if you are looking at the logs from kernel through `minicom` you will
+   notice that it will throw you into a shell. enter the following commands then reboot into flash mode.
+   ```
+   env default -a
+   saveenv
+   ```
+   This will take the kernel environment on the omnia out of the stock environment.
+6. Now when you flash again it should flash correctly.
 
 Something didn't work
 ---------------------
